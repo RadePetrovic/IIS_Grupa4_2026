@@ -17,6 +17,8 @@ import geometry.Rectangle;
 import geometry.Shape;
 
 public class DrawingPanel extends JPanel {
+	public DrawingPanel() {
+	}
 
 	@Override
 	public void paint(Graphics g) {
