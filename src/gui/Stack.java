@@ -117,5 +117,35 @@ public class Stack extends JFrame {
 		gbc_btnAdd.gridx = 0;
 		gbc_btnAdd.gridy = 2;
 		contentPane.add(btnAdd, gbc_btnAdd);
+		
+		// Dugme Pop
+		JButton btnPop = new JButton("Pop");
+		btnPop.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+		btnPop.setBackground(new Color(0, 255, 64));
+		btnPop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (dlm.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Stack is empty!", "Warning", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				
+				Donut d = lista.get(lista.size() - 1);
+				
+				DlgDonut dlgPop = new DlgDonut();
+				dlgPop.setTitle("Pop Donut");
+				dlgPop.setDonut(d); 
+				dlgPop.setVisible(true);
+				
+				if (dlgPop.isOk()) {
+					lista.remove(lista.size() - 1);
+					dlm.remove(0);
+				}
+			}
+		});
+		GridBagConstraints gbc_btnPop = new GridBagConstraints();
+		gbc_btnPop.anchor = GridBagConstraints.EAST;
+		gbc_btnPop.gridx = 1;
+		gbc_btnPop.gridy = 2;
+		contentPane.add(btnPop, gbc_btnPop);
 	}
 }
