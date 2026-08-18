@@ -114,7 +114,42 @@ public class Sort extends JFrame {
 		gbc_btnAdd.gridx = 1;
 		gbc_btnAdd.gridy = 2;
 		contentPane.add(btnAdd, gbc_btnAdd);
+		
+		JButton btnSort = new JButton("Sort");
+		btnSort.setBackground(new Color(128, 255, 255));
+		btnSort.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+		btnSort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (lista1.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "List is empty!", "Warning", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				
+				// Bubble Sort po compareTo metodi (ili površini/poluprečniku)
+				Donut temp;
+				for (int i = 0; i < lista1.size() - 1; i++) {
+					for (int j = 0; j < lista1.size() - i - 1; j++) {
+						if (lista1.get(j).compareTo(lista1.get(j + 1)) < 0) {
+							temp = lista1.get(j);
+							lista1.set(j, lista1.get(j + 1));
+							lista1.set(j + 1, temp);
+						}
+					}
+				}
+				
+				// Osvežavanje prikaza u listi
+				dlm.clear();
+				for (Donut donut : lista1) {
+					dlm.addElement(donut);
+				}
+			}
+		});
+		GridBagConstraints gbc_btnSort = new GridBagConstraints();
+		gbc_btnSort.anchor = GridBagConstraints.EAST;
+		gbc_btnSort.insets = new Insets(0, 0, 5, 5);
+		gbc_btnSort.gridx = 3;
+		gbc_btnSort.gridy = 2;
+		contentPane.add(btnSort, gbc_btnSort);
 	}
 
-		
-		
+}
