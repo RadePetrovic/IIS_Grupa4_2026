@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import geometry.Circle;
+import geometry.Donut;
 import geometry.Line;
 import geometry.Point;
 import geometry.Rectangle;
@@ -193,6 +195,26 @@ public class PnlDrawing extends JPanel {
 				if (dialog.isOk()) {
 					shapes.remove(selectedShape);
 					shapes.add(dialog.getRect());
+
+					repaint();
+				}
+			} else if (selectedShape instanceof Donut) {
+				// preskace se u ovom koraku, ostaje uslov za krug
+			} else if (selectedShape instanceof Circle) {
+				Circle circle = (Circle) selectedShape;
+				DlgCircle dialog = new DlgCircle();
+
+				dialog.getTextFieldX().setText(Integer.toString(circle.getCenter().getX()));
+				dialog.getTextFieldY().setText(Integer.toString(circle.getCenter().getY()));
+				dialog.getTxtR().setText(Integer.toString(circle.getRadius()));
+				dialog.setBtnInnerColor(circle.getInnerColor());
+				dialog.setBtnBorderColor(circle.getColor());
+
+				dialog.setVisible(true);
+
+				if (dialog.isOk()) {
+					shapes.remove(selectedShape);
+					shapes.add(dialog.getCircle());
 
 					repaint();
 				}
