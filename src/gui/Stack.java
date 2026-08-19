@@ -118,7 +118,7 @@ public class Stack extends JFrame {
 		gbc_btnAdd.gridy = 2;
 		contentPane.add(btnAdd, gbc_btnAdd);
 		
-		// Dugme Pop
+		// Dugme Pop event
 		JButton btnPop = new JButton("Pop");
 		btnPop.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
 		btnPop.setBackground(new Color(0, 255, 64));

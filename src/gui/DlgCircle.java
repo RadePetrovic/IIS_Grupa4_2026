@@ -246,7 +246,7 @@ public class DlgCircle extends JDialog {
 					}
 				});
 					
-				
+				//ok button event
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

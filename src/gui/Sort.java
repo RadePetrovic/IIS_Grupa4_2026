@@ -137,7 +137,7 @@ public class Sort extends JFrame {
 					}
 				}
 				
-				// Osvežavanje prikaza u listi
+				// Osvežavanje prikaza u listi.
 				dlm.clear();
 				for (Donut donut : lista1) {
 					dlm.addElement(donut);

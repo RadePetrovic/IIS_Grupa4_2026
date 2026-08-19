@@ -38,7 +38,6 @@ public class DlgLine extends JDialog {
 	private JLabel lblX2;
 	private JLabel lblY2;
 	
-	
 	public JButton getBtnOutlineColor() {
 		return btnOutlineColor;
 	}

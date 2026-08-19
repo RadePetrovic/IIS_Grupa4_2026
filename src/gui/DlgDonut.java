@@ -183,7 +183,7 @@ public class DlgDonut extends JDialog {
 								|| textFieldInnerRadius.getText().trim().isEmpty()) {
 							
 							setOk(false);
-							JOptionPane.showMessageDialog(null, "All fields are required!", "ERROR", //exception
+							JOptionPane.showMessageDialog(null, "All fields are required!", "ERROR", //exception 1
 									JOptionPane.ERROR_MESSAGE);
 						} else {
 							try {

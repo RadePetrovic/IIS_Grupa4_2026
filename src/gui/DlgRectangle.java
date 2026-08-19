@@ -38,7 +38,6 @@ public class DlgRectangle extends JDialog {
 	private JLabel lblHeight;
 	private JLabel lblWidth;
 
-	
 	public JTextField getTextFieldX() {
 		return textFieldX;
 	}

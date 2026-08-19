@@ -1,5 +1,4 @@
 package geometry;
-
 import java.awt.Graphics;
 import java.awt.Color;
 
