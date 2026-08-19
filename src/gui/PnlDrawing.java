@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -136,6 +137,31 @@ public class PnlDrawing extends JPanel {
 			shapes.add(newShape);
 
 		repaint();
+	}
+
+	public void modify() {
+		if (selectedShape != null) {
+			if (selectedShape instanceof Point) {
+				Point point = (Point) selectedShape;
+				DlgPoint dialog = new DlgPoint();
+
+				dialog.getTextFieldX().setText(Integer.toString(point.getX()));
+				dialog.getTextFieldY().setText(Integer.toString(point.getY()));
+				dialog.setBtnColor(point.getColor());
+
+				dialog.setVisible(true);
+
+				if (dialog.isOk()) {
+					shapes.remove(selectedShape);
+					shapes.add(dialog.getPoint());
+
+					repaint();
+				}
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "Morate selektovati oblik!", "Upozorenje",
+					JOptionPane.WARNING_MESSAGE);
+		}
 	}
 	
 	@Override
