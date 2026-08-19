@@ -21,5 +21,23 @@ public void delete() {
 					repaint();
 				}
 			}
+			else if (selectedShape instanceof Circle && !(selectedShape instanceof Donut)) {
+				int selectedOption = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete krug?",
+						"Upozorenje", JOptionPane.YES_NO_OPTION);
+				if (selectedOption == JOptionPane.YES_OPTION) {
+					shapes.remove(selectedShape);
+					selectedShape = null;
+					repaint();
+				}
+			}
+			else if (selectedShape instanceof Donut) {
+				int selectedOption = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete krug sa rupom?",
+						"Upozorenje", JOptionPane.YES_NO_OPTION);
+				if (selectedOption == JOptionPane.YES_OPTION) {
+					shapes.remove(selectedShape);
+					selectedShape = null;
+					repaint();
+				}
+			}
 		}
 	}
