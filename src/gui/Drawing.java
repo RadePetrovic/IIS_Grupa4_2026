@@ -83,10 +83,16 @@ public class Drawing extends JFrame {
 		
 		contentPane.add(toolBar_1, BorderLayout.SOUTH);
 
-		// Povezivanje dugmeta Modify sa pnlDrawing.modify()
+		// Povezivanje dugmadi
 		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pnlDrawing.modify();
+			}
+		});
+
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pnlDrawing.delete();
 			}
 		});
 	}
