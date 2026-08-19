@@ -80,6 +80,18 @@ public class PnlDrawing extends JPanel {
 				}
 				startPoint = null;
 			}
+		} else if (frame.getTglbtnRectangle().isSelected()) {
+			DlgRectangle dialog = new DlgRectangle();
+			dialog.setModal(true);
+			dialog.getTextFieldX().setText(Integer.toString(me.getX()));
+			dialog.getTextFieldX().setEditable(false);
+			dialog.getTextFieldY().setText(Integer.toString(me.getY()));
+			dialog.getTextFieldY().setEditable(false);
+			dialog.setVisible(true);
+
+			if (dialog.isOk()) {
+				newShape = dialog.getRect();
+			}
 		}
 
 		if (newShape != null)
