@@ -199,7 +199,24 @@ public class PnlDrawing extends JPanel {
 					repaint();
 				}
 			} else if (selectedShape instanceof Donut) {
-				// preskace se u ovom koraku, ostaje uslov za krug
+				Donut donut = (Donut) selectedShape;
+				DlgDonut dialog = new DlgDonut();
+
+				dialog.getTextFieldX().setText(Integer.toString(donut.getCenter().getX()));
+				dialog.getTextFieldY().setText(Integer.toString(donut.getCenter().getY()));
+				dialog.getTxtR().setText(Integer.toString(donut.getRadius()));
+				dialog.getTxtInnerR().setText(Integer.toString(donut.getInnerRadius()));
+				dialog.setBtnInnerColor(donut.getInnerColor());
+				dialog.setBtnBorderColor(donut.getColor());
+
+				dialog.setVisible(true);
+
+				if (dialog.isOk()) {
+					shapes.remove(selectedShape);
+					shapes.add(dialog.getDonut());
+
+					repaint();
+				}
 			} else if (selectedShape instanceof Circle) {
 				Circle circle = (Circle) selectedShape;
 				DlgCircle dialog = new DlgCircle();
