@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import geometry.Line;
 import geometry.Point;
 import geometry.Shape;
 
@@ -154,6 +155,24 @@ public class PnlDrawing extends JPanel {
 				if (dialog.isOk()) {
 					shapes.remove(selectedShape);
 					shapes.add(dialog.getPoint());
+
+					repaint();
+				}
+			} else if (selectedShape instanceof Line) {
+				Line line = (Line) selectedShape;
+				DlgLine dialog = new DlgLine();
+
+				dialog.getTextFieldX1().setText(Integer.toString(line.getStartPoint().getX()));
+				dialog.getTextFieldY1().setText(Integer.toString(line.getStartPoint().getY()));
+				dialog.getTextFieldX2().setText(Integer.toString(line.getEndPoint().getX()));
+				dialog.getTextFieldY2().setText(Integer.toString(line.getEndPoint().getY()));
+				dialog.setBtnColor(line.getColor());
+
+				dialog.setVisible(true);
+
+				if (dialog.isOk()) {
+					shapes.remove(selectedShape);
+					shapes.add(dialog.getLine());
 
 					repaint();
 				}
