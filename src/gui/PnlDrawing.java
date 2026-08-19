@@ -42,7 +42,20 @@ public class PnlDrawing extends JPanel {
 	}
 	
 	protected void thisMouseClicked(MouseEvent me) {
+		if (frame.getTglbtnPoint().isSelected()) {
+		    DlgPoint dialog = new DlgPoint();
+		    dialog.setModal(true);
 
+		    dialog.getTextFieldX().setText(Integer.toString(click.getX()));
+		    dialog.getTextFieldX().setEditable(false);
+		    dialog.getTextFieldY().setText(Integer.toString(click.getY()));
+		    dialog.getTextFieldY().setEditable(false);
+
+		    dialog.setVisible(true);
+		    if (dialog.isOk()) {
+		        newShape = dialog.getPoint();
+		    }
+		}
 	}
 	
 	@Override
@@ -61,8 +74,5 @@ public class PnlDrawing extends JPanel {
 	}
 	public Shape getSelectedShape() {
 		return selectedShape;
-	}
-	public void setSelectedShape(Shape selectedShape) {
-		this.selectedShape = selectedShape;
 	}
 }

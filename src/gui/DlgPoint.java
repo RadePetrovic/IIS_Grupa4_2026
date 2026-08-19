@@ -138,7 +138,7 @@ public class DlgPoint extends JDialog {
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-
+           //ok button
 			{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
