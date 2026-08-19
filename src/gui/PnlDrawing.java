@@ -105,6 +105,18 @@ public class PnlDrawing extends JPanel {
 			if (dialog.isOk()) {
 				newShape = dialog.getCircle();
 			}
+		} else if (frame.getTglbtnDonut().isSelected()) {
+			DlgDonut dialog = new DlgDonut();
+			dialog.setModal(true);
+			dialog.getTextFieldX().setText(Integer.toString(click.getX()));
+			dialog.getTextFieldX().setEditable(false);
+			dialog.getTextFieldY().setText(Integer.toString(click.getY()));
+			dialog.getTextFieldY().setEditable(false);
+			dialog.setVisible(true);
+
+			if (dialog.isOk()) {
+				newShape = dialog.getDonut();
+			}
 		}
 
 		if (newShape != null)
