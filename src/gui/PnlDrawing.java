@@ -1,43 +1,12 @@
-public void delete() {
-		if (selectedShape != null) {
-			if (selectedShape instanceof Point) {
-				int selectedOption = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete tacku?",
-						"Upozorenje", JOptionPane.YES_NO_OPTION);
-				if (selectedOption == JOptionPane.YES_OPTION) {
-					shapes.remove(selectedShape);
-					selectedShape = null;
-					repaint();
-				}
-			}
-		} else {
-			JOptionPane.showMessageDialog(null, "Morate selektovati oblik!", "Upozorenje",
-					JOptionPane.WARNING_MESSAGE);
-			else if (selectedShape instanceof Line) {
-				int selectedOption = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete liniju?",
-						"Upozorenje", JOptionPane.YES_NO_OPTION);
-				if (selectedOption == JOptionPane.YES_OPTION) {
-					shapes.remove(selectedShape);
-					selectedShape = null;
-					repaint();
-				}
-			}
-			else if (selectedShape instanceof Circle && !(selectedShape instanceof Donut)) {
-				int selectedOption = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete krug?",
-						"Upozorenje", JOptionPane.YES_NO_OPTION);
-				if (selectedOption == JOptionPane.YES_OPTION) {
-					shapes.remove(selectedShape);
-					selectedShape = null;
-					repaint();
-				}
-			}
-			else if (selectedShape instanceof Donut) {
-				int selectedOption = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete krug sa rupom?",
-						"Upozorenje", JOptionPane.YES_NO_OPTION);
-				if (selectedOption == JOptionPane.YES_OPTION) {
-					shapes.remove(selectedShape);
-					selectedShape = null;
-					repaint();
-				}
-			}
+public void selectShape(Point click) {
+		selectedShape = null;
+		Iterator<Shape> iterator = shapes.iterator();
+		while (iterator.hasNext()) {
+			Shape shape = iterator.next();
+			shape.setSelected(false);
+			if (shape.contains(click.getX(), click.getY()))
+				selectedShape = shape;
 		}
+		if (selectedShape != null)
+			selectedShape.setSelected(true);
 	}
