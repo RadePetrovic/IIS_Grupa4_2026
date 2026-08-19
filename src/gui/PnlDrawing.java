@@ -14,6 +14,7 @@ import javax.swing.border.LineBorder;
 
 import geometry.Line;
 import geometry.Point;
+import geometry.Rectangle;
 import geometry.Shape;
 
 public class PnlDrawing extends JPanel {
@@ -173,6 +174,25 @@ public class PnlDrawing extends JPanel {
 				if (dialog.isOk()) {
 					shapes.remove(selectedShape);
 					shapes.add(dialog.getLine());
+
+					repaint();
+				}
+			} else if (selectedShape instanceof Rectangle) {
+				Rectangle rect = (Rectangle) selectedShape;
+				DlgRectangle dialog = new DlgRectangle();
+
+				dialog.getTextFieldX().setText(Integer.toString(rect.getUpperLeftPoint().getX()));
+				dialog.getTextFieldY().setText(Integer.toString(rect.getUpperLeftPoint().getY()));
+				dialog.getTxtWidth().setText(Integer.toString(rect.getWidth()));
+				dialog.getTxtHeight().setText(Integer.toString(rect.getHeight()));
+				dialog.setBtnInnerColor(rect.getInnerColor());
+				dialog.setBtnBorderColor(rect.getColor());
+
+				dialog.setVisible(true);
+
+				if (dialog.isOk()) {
+					shapes.remove(selectedShape);
+					shapes.add(dialog.getRect());
 
 					repaint();
 				}
