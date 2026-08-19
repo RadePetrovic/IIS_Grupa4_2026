@@ -42,20 +42,50 @@ public class PnlDrawing extends JPanel {
 	}
 	
 	protected void thisMouseClicked(MouseEvent me) {
+		Shape newShape = null;
+		Point click = new Point(me.getX(), me.getY());
+
 		if (frame.getTglbtnPoint().isSelected()) {
-		    DlgPoint dialog = new DlgPoint();
-		    dialog.setModal(true);
+			DlgPoint dialog = new DlgPoint();
+			dialog.setModal(true);
 
-		    dialog.getTextFieldX().setText(Integer.toString(click.getX()));
-		    dialog.getTextFieldX().setEditable(false);
-		    dialog.getTextFieldY().setText(Integer.toString(click.getY()));
-		    dialog.getTextFieldY().setEditable(false);
+			dialog.getTextFieldX().setText(Integer.toString(click.getX()));
+			dialog.getTextFieldX().setEditable(false);
+			dialog.getTextFieldY().setText(Integer.toString(click.getY()));
+			dialog.getTextFieldY().setEditable(false);
 
-		    dialog.setVisible(true);
-		    if (dialog.isOk()) {
-		        newShape = dialog.getPoint();
-		    }
+			dialog.setVisible(true);
+			if (dialog.isOk()) {
+				newShape = dialog.getPoint();
+			}
+		} else if (frame.getTglbtnLine().isSelected()) {
+			if (startPoint == null) {
+				startPoint = click;
+			} else {
+				DlgLine dialog = new DlgLine();
+				dialog.setModal(true);
+
+				dialog.getTextFieldX1().setText(Integer.toString(startPoint.getX()));
+				dialog.getTextFieldX1().setEditable(false);
+				dialog.getTextFieldY1().setText(Integer.toString(startPoint.getY()));
+				dialog.getTextFieldY1().setEditable(false);
+				dialog.getTextFieldX2().setText(Integer.toString(click.getX()));
+				dialog.getTextFieldX2().setEditable(false);
+				dialog.getTextFieldY2().setText(Integer.toString(click.getY()));
+				dialog.getTextFieldY2().setEditable(false);
+
+				dialog.setVisible(true);
+				if (dialog.isOk()) {
+					newShape = dialog.getLine();
+				}
+				startPoint = null;
+			}
 		}
+
+		if (newShape != null)
+			shapes.add(newShape);
+
+		repaint();
 	}
 	
 	@Override
@@ -74,5 +104,8 @@ public class PnlDrawing extends JPanel {
 	}
 	public Shape getSelectedShape() {
 		return selectedShape;
+	}
+	public void setSelectedShape(Shape selectedShape) {
+		this.selectedShape = selectedShape;
 	}
 }
