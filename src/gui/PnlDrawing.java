@@ -241,6 +241,21 @@ public class PnlDrawing extends JPanel {
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
+
+	public void delete() {
+		if (selectedShape != null) {
+			int selectedOption = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete oblik?",
+					"Upozorenje", JOptionPane.YES_NO_OPTION);
+			if (selectedOption == JOptionPane.YES_OPTION) {
+				shapes.remove(selectedShape);
+				selectedShape = null;
+				repaint();
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "Morate selektovati oblik!", "Upozorenje",
+					JOptionPane.WARNING_MESSAGE);
+		}
+	}
 	
 	@Override
 	public void paint(Graphics g) {
